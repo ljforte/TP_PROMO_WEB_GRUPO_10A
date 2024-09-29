@@ -13,5 +13,10 @@ namespace TP_PROMO_WEB_GRUPO_10A
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
