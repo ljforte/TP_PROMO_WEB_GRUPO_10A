@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
-namespace TP_PROMO_WEB_GRUPO_10A
+namespace Dominio
 {
     public class Articulos
     {
@@ -15,11 +16,11 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
         public string Descripcion { get; set; }
 
-        [DisplayName("Marca")]
-        public Marca IdMarca { get; set; }
+        [DisplayName("Marcas")]
+        public Marcas IdMarca { get; set; }
 
-        [DisplayName("Categoria")]
-        public Categoria IdCategoria { set; get; }
+        [DisplayName("Categorias")]
+        public Categorias IdCategoria { set; get; }
 
         //public List<Imagen> Imagen { set; get; }
 
