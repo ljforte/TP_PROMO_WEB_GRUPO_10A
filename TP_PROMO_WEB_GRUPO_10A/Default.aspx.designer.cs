@@ -15,21 +15,21 @@ namespace TP_PROMO_WEB_GRUPO_10A
     {
 
         /// <summary>
-        /// Control dgvArticulos.
+        /// Control txtCodigoVoucher.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvArticulos;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoVoucher;
 
         /// <summary>
-        /// Control repRepitidor.
+        /// Control btnValidar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repRepitidor;
+        protected global::System.Web.UI.WebControls.Button btnValidar;
     }
 }

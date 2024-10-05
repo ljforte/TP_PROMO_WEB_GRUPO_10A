@@ -100,8 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Articulos.aspx" />
+    <Content Include="Clientes.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Sorteo.png" />
     <Content Include="Default.aspx" />
     <Content Include="DetalleArticulo.aspx" />
     <Content Include="favicon.ico" />
@@ -145,6 +148,20 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Articulos.aspx.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Articulos.aspx.designer.cs">
+      <DependentUpon>Articulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
