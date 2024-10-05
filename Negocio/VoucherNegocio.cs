@@ -12,6 +12,71 @@ namespace Negocio
     public class VoucherNegocio
     {
         private AccesoDatos datos = new AccesoDatos();
-        private List<Articulos> list;
+        private List<Vouchers> list;
+
+        public List<Vouchers> ListarVouchers()
+        {
+            list = new List<Vouchers>();
+            try
+            {
+                string consulta = @"SELECT CodigoVoucher FROM Vouchers";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Vouchers vou = new Vouchers();
+                    vou.CodigoVoucher = (string)datos.Lector["CodigoVoucher"];
+                    if (!(datos.Lector["CodigoVoucher"] is DBNull))
+                        vou.CodigoVoucher = (string)datos.Lector["CodigoVoucher"];
+                    if (!(datos.Lector["IdCliente"] is DBNull))
+                        vou.IdCliente = (int)datos.Lector["IdCliente"];
+                    list.Add(vou);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+    }
+
+    public enum ResultadoValidacion
+    {
+        CodigoErroneo,
+        CodigoExitoso,
+        CodigoUtilizado
+    }
+
+    public class VoucherValidator
+    {
+        public ResultadoValidacion ValidarVoucherEnLista(List<Vouchers> listaVouchers, string codigoVoucherBuscado)
+        {
+            int i = 0;
+            while (i < listaVouchers.Count)
+            {
+                if (listaVouchers[i].CodigoVoucher == codigoVoucherBuscado)
+                {
+                    if (listaVouchers[i].IdCliente != null)
+                    {
+                        return ResultadoValidacion.CodigoUtilizado;
+                    }
+                    else
+                    {
+                        return ResultadoValidacion.CodigoExitoso;
+                    }
+                }
+                i++;
+            }
+
+            return ResultadoValidacion.CodigoErroneo;
+        }
     }
 }
+
+

@@ -7,7 +7,7 @@ namespace Dominio
 {
     public class Vouchers
     {
-        public string Id { get; set; }
+        public string CodigoVoucher { get; set; }
 
         public int IdCliente { get; set; }
 
