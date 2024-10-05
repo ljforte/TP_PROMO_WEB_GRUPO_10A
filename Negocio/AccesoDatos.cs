@@ -26,7 +26,7 @@ namespace Negocio
         public AccesoDatos()
         {
             //conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
-            conexion = new SqlConnection("server=(local)\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection("server=(local)\\SQLEXPRESS; database=PROMOS_DB; integrated security=true");
             //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true");
             comando = new SqlCommand();
         }
