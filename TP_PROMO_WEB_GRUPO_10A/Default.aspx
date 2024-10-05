@@ -18,32 +18,45 @@
             </Columns>
             <%--CARD--%>
         </asp:GridView>
-        <div class="row row-cols-2 row-cols-md-4 g-4">
-            <% foreach (Dominio.Articulos articulo in listarPokemon)
+        <div class="row row-cols-2 row-cols-md-3 g-4">
+            <%--            <% foreach (Dominio.Articulos articulo in listarPokemon)
                 { %>
             <div class="col">
                 <div class="card h-100">
-                    <%--<div class="card h-20">--%>
                     <img class="card-img-top" width="100" height="250" src="<%: articulo.listImagenes[0].ImagenUrl %>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><%: articulo.Nombre %></h5>
                         <p class="card-text"><%: articulo.Descripcion %>></p>
-
-
                     </div>
-
                     <div class="card-footer">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-outline-primary me-md-2" type="button">Detalle</button>
-                            <button class="btn btn-outline-success me-md-2" type="button">Agregar</button>
-                            
-                            <%--<a href="DetalleArticulo.aspx?id=<%:articulo.Id %>" class="btn btn-primary">Detalle</a>--%>                       
+                            <button class="btn btn-outline-success me-md-2" type="button">Agregar</button>                            
                         </div>
-
                     </div>
                 </div>
             </div>
-            <%  }%>
+            <%  }%>--%>
+            <asp:Repeater ID="repRepitidor" runat="server">
+                <ItemTemplate>
+                    <div class="col">
+                        <div class="card h-100">
+                            <img class="card-img-top" width="100" height="250" src="<%#Eval("listImagenes[0].ImagenUrl") %>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><%#Eval("Nombre")%></h5>
+                                <p class="card-text"><%#Eval("Descripcion")%>></p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <asp:Button ID="btnDetalle" runat="server" Text="Detalle"  cssclass="btn btn-outline-primary me-md-2" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloID" OnClick ="btnDetalle_Click"/>
+                                   <<asp:Button ID="btnComprar" runat="server" Text="Comprar"  cssclass="btn btn-outline-success me-md-2" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloID" OnClick ="btnComprar_Click"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+
         </div>
 
 

@@ -21,24 +21,24 @@ namespace Negocio
         {
             list = new List<Articulos>();
             try {
-                //string consulta = @"SELECT
-                //                        A.Id,
-                //                        A.Codigo, 
-                //                        A.Nombre, 
-                //                        A.Descripcion, 
-                //                        M.Descripcion AS Marca, 
-                //                        C.Descripcion AS Categoria, 
-                //                        A.Precio,
-                //                        M.Id as IdMarca,
-                //                        C.Id as IdCategoria
+                string consulta = @"SELECT
+                                        A.Id,
+                                        A.Codigo, 
+                                        A.Nombre, 
+                                        A.Descripcion, 
+                                        M.Descripcion AS Marca, 
+                                        C.Descripcion AS Categoria, 
+                                        A.Precio,
+                                        M.Id as IdMarca,
+                                        C.Id as IdCategoriahttps://http2.mlstatic.com/D_NQ_NP_701613-MLA45464844877_042021-O.webp
 
-                //                        FROM ARTICULOS AS A
-                //                        LEFT JOIN Marcas AS M ON A.IdMarca = M.Id
-                //                        LEFT JOIN Categorias AS C ON A.IdCategoria = C.Id
-                //                        ";
-                //datos.setearConsulta(consulta);
+                                        FROM ARTICULOS AS A
+                                        LEFT JOIN Marcas AS M ON A.IdMarca = M.Id
+                                        LEFT JOIN Categorias AS C ON A.IdCategoria = C.Id
+                                        ";
+                datos.setearConsulta(consulta);
 
-                datos.setearProcedimiento("storedListar");
+                //datos.setearProcedimiento("storedListar");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
