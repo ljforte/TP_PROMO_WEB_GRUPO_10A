@@ -16,11 +16,11 @@ namespace Dominio
 
         public string Email
         {
-            get { return email; }
+            get { return Email; }
             set
             {
                 if (value != "")
-                    email = value;
+                    Email = value;
                 else
                     throw new Exception("email vacío en el dominio...");
             }

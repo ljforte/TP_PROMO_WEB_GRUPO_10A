@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Dominio
 {
@@ -22,7 +23,7 @@ namespace Dominio
         [DisplayName("Categorias")]
         public Categorias IdCategoria { set; get; }
 
-        //public List<Imagen> Imagen { set; get; }
+        public List<Imagenes> listImagenes { set; get; }
 
         public decimal Precio { get; set; }
     }
