@@ -47,7 +47,7 @@
                             <a class="nav-link active" aria-current="page" href="/">Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/About">About</a>
+                            <a class="nav-link active" aria-current="page" href="DetalleArticulo.aspx">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Contact.aspx">Contact</a>
@@ -71,6 +71,16 @@
                             </ul>
                 </div>
         </nav>
+<%--        <div class="container">
+            <hr />
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlacerHolder" runat="server">
+
+                </asp:ContentPlaceHolder>
+            </div>
+
+
+        </div>--%>
 
         <%--FOOTER--%>
         <div class="container body-content">
