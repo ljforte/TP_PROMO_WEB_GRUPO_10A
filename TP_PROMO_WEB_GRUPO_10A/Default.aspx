@@ -22,10 +22,11 @@
                 <div class="card-footer">
 
                     <div class="d-grid gap-2 d-md-block">
-                        <asp:Button ID="btnValidar" runat="server" Text="Validar" CssClass="btn btn-outline-success me-md-2" CommandArgument='txtCodigoVoucher.Text' CommandName="CodigoVoucher" OnClick="btnValidar_Click" />
+                        <asp:Button ID="btnValidar" runat="server" Text="Validar" CssClass="btn btn-outline-success me-md-2" OnClick="btnValidar_Click" />
                     </div>
 
                 </div>
+                              <asp:Label ID="lblResultado" runat="server" CssClass="text-danger"></asp:Label>
             </div>
 
             <%--FIN CARD--%>

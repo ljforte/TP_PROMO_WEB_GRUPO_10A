@@ -19,7 +19,7 @@ namespace Negocio
             list = new List<Vouchers>();
             try
             {
-                string consulta = @"SELECT CodigoVoucher FROM Vouchers";
+                string consulta = @"SELECT CodigoVoucher, IdCliente FROM Vouchers";
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
