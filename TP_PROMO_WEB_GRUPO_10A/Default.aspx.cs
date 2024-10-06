@@ -43,11 +43,11 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     break;
 
                 case ResultadoValidacion.CodigoExitoso:
-                    Response.Redirect("FormClientes.aspx");
+                    Response.Redirect("DetalleArticulo.aspx" + codigo);
                     break;
 
                 case ResultadoValidacion.CodigoUtilizado:
-                    //lblResultado.Text = "El código ha sido utilizado anteriormente.";
+                    lblResultado.Text = "El código ha sido utilizado anteriormente.";
                     
                     break;
             }

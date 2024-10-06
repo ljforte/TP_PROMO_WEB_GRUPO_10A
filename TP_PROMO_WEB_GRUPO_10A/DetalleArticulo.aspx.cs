@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,22 @@ namespace TP_PROMO_WEB_GRUPO_10A
 {
     public partial class DetalleArticulo : Page
     {
+        public List<Dominio.Articulos> listaArticulos;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CargarArticulos();
+            }
+        }
 
+        private void CargarArticulos()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            listaArticulos = negocio.ListarArticulos();
+            RepeaterArticulos.DataSource = listaArticulos;
+            RepeaterArticulos.DataBind();
         }
     }
 }
