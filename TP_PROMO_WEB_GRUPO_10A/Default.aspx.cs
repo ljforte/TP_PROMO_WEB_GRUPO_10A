@@ -42,7 +42,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     break;
 
                 case ResultadoValidacion.CodigoExitoso:
-                    lblResultado.Text = "El código fue validado exitosamente.";
+                    Response.Redirect("About.aspx");
                     break;
 
                 case ResultadoValidacion.CodigoUtilizado:

@@ -13,23 +13,17 @@
             <div class="card-body">
                 <h5 class="card-title">PROMO GANA !!!</h5>
                 <p class="card-text">Ingrese el Codigo </p>
-
-              <%--  <input type="text" id="txtCodigoVoucher" class="form-control" value="Ingreso Codigo" required />--%>
                 <asp:TextBox ID="txtCodigoVoucher" runat="server" CssClass="form-control"></asp:TextBox>
                 <div class="valid-feedback">
-                    Looks good!
                 </div>
                 <div class="card-footer">
-
                     <div class="d-grid gap-2 d-md-block">
                         <asp:Button ID="btnValidar" runat="server" Text="Validar" CssClass="btn btn-outline-success me-md-2" OnClick="btnValidar_Click" />
                     </div>
-
+                        <asp:Label ID="lblResultado" runat="server" CssClass="text-danger"></asp:Label>
                 </div>
-                              <asp:Label ID="lblResultado" runat="server" CssClass="text-danger"></asp:Label>
             </div>
-
-            <%--FIN CARD--%>
+        </div>
     </main>
 
 </asp:Content>
