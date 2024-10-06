@@ -11,7 +11,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
 {
 
 
-    public partial class Contact
+    public partial class DetalleArticulo
     {
     }
 }

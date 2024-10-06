@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TP_PROMO_WEB_GRUPO_10A
 {
-    public partial class DetalleArticulo : System.Web.UI.Page
+    public partial class DetalleArticulo : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

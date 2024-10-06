@@ -34,7 +34,7 @@
 
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="Login.aspx">
+                <a class="navbar-brand" href="/" >
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh_vz9k9mLwX5Cj0Jl8aJSNf-oX8clwYlqJg&s" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 </a>
 
@@ -47,11 +47,12 @@
                             <a class="nav-link active" aria-current="page" href="/">Home </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="DetalleArticulo.aspx">About</a>
+                            <a class="nav-link active" aria-current="page" href="Clientes.aspx">Clientes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Contact.aspx">Contact</a>
+                                                <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Articulos.aspx">Articulos</a>
                         </li>
+              
                         <%--LOGIN--%>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Login</a>
