@@ -38,17 +38,17 @@ namespace TP_PROMO_WEB_GRUPO_10A
             switch(resultado)
             {
                 case ResultadoValidacion.CodigoErroneo:
-                    //lblResultado.Text = "El código ingresado es erróneo.";
-                    Response.Redirect("Clientes.aspx");
+                    lblResultado.Text = "El código ingresado es erróneo.";
+                    
                     break;
 
                 case ResultadoValidacion.CodigoExitoso:
-                    Response.Redirect("Articulos.aspx");
+                    Response.Redirect("FormClientes.aspx");
                     break;
 
                 case ResultadoValidacion.CodigoUtilizado:
                     //lblResultado.Text = "El código ha sido utilizado anteriormente.";
-                    Response.Redirect("DetalleArticulo.aspx");
+                    
                     break;
             }
         }
