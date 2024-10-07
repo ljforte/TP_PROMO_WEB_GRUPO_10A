@@ -27,5 +27,10 @@ namespace TP_PROMO_WEB_GRUPO_10A
             RepeaterArticulos.DataSource = listaArticulos;
             RepeaterArticulos.DataBind();
         }
+
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormFelicidades.aspx", false);
+        }
     }
 }

@@ -88,6 +88,9 @@ namespace TP_PROMO_WEB_GRUPO_10A
             bool ok = true;
             EsconderTxtValidaciones();
 
+            VoucherNegocio negocioV = new VoucherNegocio();
+            Vouchers voucher = new Vouchers();
+
             try
             {
                 if (txtApellido.Text.IsNullOrWhiteSpace()) {
@@ -124,7 +127,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
                 if (ok)
                 {
                     btnSiguiente.Text = "AVANZO";
-                   /* nuevoCliente = new Clientes();
+                    nuevoCliente = new Clientes();
                     ClienteNegocio neg = new ClienteNegocio();
                     //nuevoCliente.Id = int.Parse(txtId.Text);
                     nuevoCliente.Documento = txtDocumento.Text;
@@ -136,7 +139,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     nuevoCliente.CP = int.Parse(txtCP.Text);
                     neg.Agregar(nuevoCliente);
                     Response.Redirect("Default.aspx", false);
-                   */
+                   
                 }
 
             }

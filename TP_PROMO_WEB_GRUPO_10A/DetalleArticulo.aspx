@@ -2,7 +2,7 @@
 <%@ Page Title="Detalle Articulos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleArticulo.aspx.cs" Inherits="TP_PROMO_WEB_GRUPO_10A.DetalleArticulo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Lista de Artículos</h1>
+    <h1>¡Elegí el articulo que deseas canjear!</h1>
     <asp:Repeater ID="RepeaterArticulos" runat="server">
         <HeaderTemplate>
             <table class="table table-bordered">
@@ -49,6 +49,7 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
+                        <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" CssClass="btn btn-primary" />
                     </div>
                 </td>
             </tr>
