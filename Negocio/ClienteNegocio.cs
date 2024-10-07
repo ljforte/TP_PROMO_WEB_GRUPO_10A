@@ -129,6 +129,21 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public int ConsultarId(string dni)
+        {
+            int id=0;
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("Select id from CLIENTES where Documento = '" + dni + "'");
+            datos.ejecutarLectura();
+
+            if (datos.Lector.Read())
+            {
+                id = (int)datos.Lector["Id"];
+            }
+            return id;
+        }
+
         public void Agregar(Clientes nuevo) {
             try
             {

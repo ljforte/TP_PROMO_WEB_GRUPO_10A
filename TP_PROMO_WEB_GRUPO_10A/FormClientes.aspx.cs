@@ -123,7 +123,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     lblErrorEmail.Visible = true;
                     ok = false;
                 }
-
+                VoucherNegocio voucherNegocio = new VoucherNegocio();
                 if (ok)
                 {
                     int id;
@@ -141,7 +141,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
                     neg.Agregar(nuevoCliente);
                     id=negocio.ConsultarId(nuevoCliente.Documento);
-
+                    voucherNegocio.CargarRegistro(id);
 
                     Response.Redirect("Default.aspx", false);
                    
