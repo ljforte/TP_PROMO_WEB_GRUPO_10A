@@ -126,10 +126,11 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
                 if (ok)
                 {
-                    btnSiguiente.Text = "AVANZO";
+                    int id;
                     nuevoCliente = new Clientes();
                     ClienteNegocio neg = new ClienteNegocio();
-                    //nuevoCliente.Id = int.Parse(txtId.Text);
+                    
+
                     nuevoCliente.Documento = txtDocumento.Text;
                     nuevoCliente.Nombre = txtNombre.Text;
                     nuevoCliente.Apellido = txtApellido.Text;
@@ -137,7 +138,11 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     nuevoCliente.Ciudad = txtCiudad.Text;
                     nuevoCliente.Direccion = txtDireccion.Text;
                     nuevoCliente.CP = int.Parse(txtCP.Text);
+
                     neg.Agregar(nuevoCliente);
+                    id=negocio.ConsultarId(nuevoCliente.Documento);
+
+
                     Response.Redirect("Default.aspx", false);
                    
                 }
@@ -149,12 +154,9 @@ namespace TP_PROMO_WEB_GRUPO_10A
                 throw ex;
             }
             
-    
-            //Siguiente Pantalla
-
-
         }
 
+       
         protected void txtDocumento_TextChanged(object sender, EventArgs e)
         {
             ClienteNegocio neg = new ClienteNegocio();
