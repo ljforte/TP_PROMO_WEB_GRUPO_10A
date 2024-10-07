@@ -43,7 +43,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
                     break;
 
                 case ResultadoValidacion.CodigoExitoso:
-                    Response.Redirect("DetalleArticulo.aspx" + codigo);
+                    Response.Redirect("DetalleArticulo.aspx");
                     break;
 
                 case ResultadoValidacion.CodigoUtilizado:

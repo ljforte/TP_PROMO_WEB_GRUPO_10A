@@ -8,24 +8,35 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using WebGrease.Css.Ast;
+using static Negocio.ClienteNegocio;
 
 namespace TP_PROMO_WEB_GRUPO_10A
 {
     public partial class FormClientes : Page
     {
+        public List<Clientes> ListaClientes;
+
         private Clientes nuevoCliente;
+
+        private ClienteNegocio negocio = new ClienteNegocio();
+        private void CargarListaCliente()
+        {
+            ClienteNegocio negocio = new ClienteNegocio();
+            ListaClientes = negocio.ListarClientes();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                HabilitarTxt(false);
-                
-
+                CargarListaCliente();
+                HabilitarTxt(true);
             }
         }
 
+        
         private void HabilitarTxt(bool flag)
         {
+
             txtNombre.ReadOnly = flag;
             txtApellido.ReadOnly = flag;
             txtEmail.ReadOnly = flag;
@@ -40,6 +51,7 @@ namespace TP_PROMO_WEB_GRUPO_10A
             txtDireccion.Visible = !flag;
             txtCiudad.Visible = !flag;
             txtCP.Visible = !flag;
+            btnSiguiente.Visible = !flag;
 
             lblCP.Visible = !flag;
             lblNombre.Visible = !flag;
@@ -104,8 +116,15 @@ namespace TP_PROMO_WEB_GRUPO_10A
                 txtDireccion.Text = aux.Direccion;
                 txtCiudad.Text = aux.Ciudad;
                 txtCP.Text = Convert.ToString(aux.CP);
-                
-                
+
+
+                txtNombre.ReadOnly = true;
+                txtApellido.ReadOnly = true;
+                txtEmail.ReadOnly = true;
+                txtDireccion.ReadOnly = true;
+                txtCiudad.ReadOnly = true;
+                txtCP.ReadOnly = true;
+
                 nuevoCliente = aux;
 
             }
@@ -116,12 +135,46 @@ namespace TP_PROMO_WEB_GRUPO_10A
                 txtDireccion.Text = " ";
                 txtCiudad.Text = " ";
                 txtCP.Text = " ";
-                               
+
+                txtNombre.ReadOnly = false;
+                txtApellido.ReadOnly = false;
+                txtEmail.ReadOnly = false;
+                txtDireccion.ReadOnly = false;
+                txtCiudad.ReadOnly = false;
+                txtCP.ReadOnly = false;
+
             }
 
 
         }
-   
+
+        protected void ValidarDni_Click(object sender, EventArgs e)
+        {
+            string dni=txtDocumento.Text;
+
+       
+
+            if (string.IsNullOrEmpty(txtDocumento.Text))
+            {
+                lblResultadoDni.Text = "Ingresa Dni";
+                HabilitarTxt(true);
+            }
+            else if (negocio.buscarID(dni) == null)
+            {
+                lblResultadoDni.Text = "Carga tus datos";
+                HabilitarTxt(false);
+            }
+            else {
+                lblResultadoDni.Text = "El Dni ya se encuentra cargado";
+                HabilitarTxt(false);
+                txtNombre.ReadOnly = false;
+                txtApellido.ReadOnly = false;
+                txtEmail.ReadOnly = false;
+                txtDireccion.ReadOnly = false;
+                txtCiudad.ReadOnly = false;
+                txtCP.ReadOnly = false;
+            }
+
+        }
     }
 }
-

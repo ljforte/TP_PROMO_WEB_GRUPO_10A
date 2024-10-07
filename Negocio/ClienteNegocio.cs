@@ -12,7 +12,6 @@ namespace Negocio
     public class ClienteNegocio
     {
         private AccesoDatos datos = new AccesoDatos();
-        private List<Clientes> listClientes = new List<Clientes>();
         private Clientes _cliente;
         string consulta;
 
@@ -30,17 +29,26 @@ namespace Negocio
                                         ";
         }
 
-       public Clientes buscarID(string doc = "")
+        public Clientes buscarID(string doc)
         {
             _cliente = null;
-            if (doc != "")
-            {
-                consulta +=  " WHERE c.Documento = " + doc;
-            }
             try
             {
-                datos.setearConsulta(consulta);
-                datos.setearParametro("@Documento", doc);
+                
+
+                datos.setearConsulta (@"SELECT
+                            c.Id,
+                            c.Documento,
+	                        c.Nombre,
+	                        c.Apellido,
+	                        c.Email,
+	                        c.Direccion,
+	                        c.Ciudad,
+	                        c.CP
+                            FROM Clientes AS c
+                            where c.Documento = '" + doc + "'");
+
+                //datos.setearParametro("@Documento", doc);
                 datos.ejecutarLectura();
                 if (datos.Lector.Read()) {
                     _cliente = new Clientes();
@@ -58,14 +66,14 @@ namespace Negocio
                     _cliente.Ciudad = (string)datos.Lector["Ciudad"];
                     
                     _cliente.CP = (int)datos.Lector["CP"];
-                    
+
+                    return _cliente;
                 }
                 return _cliente;
-                
             }
             catch (Exception ex)
             {
-
+                
                 throw new Exception("Error al obtener el Cliente por Doc.", ex);
             }
             finally { datos.cerrarConexion(); }
@@ -77,14 +85,27 @@ namespace Negocio
         }
 
         public List<Clientes> ListarClientes() { 
-            listClientes = new List<Clientes>();
-
+        List<Clientes> listClientes = new List<Clientes>();
             try {
-                datos.setearConsulta(consulta);
+                string consultaSQL = @"SELECT
+                            Id,
+                            Documento,
+	                        Nombre,
+	                        Apellido,
+	                        Email,
+	                        Direccion,
+	                        Ciudad,
+	                        CP
+                            FROM Clientes
+                                        ";
+                datos.setearConsulta(consultaSQL);
                 datos.ejecutarLectura();
+
+
                 while (datos.Lector.Read()) { 
                     Clientes cliente = new Clientes();
-                    cliente.Id = (int)datos.Lector["id"];
+                    if (!(datos.Lector["Id"] is DBNull))
+                        cliente.Id = (int)datos.Lector["Id"];
                     if (!(datos.Lector["Documento"] is DBNull))
                         cliente.Documento = (string)datos.Lector["Documento"];
                     if (!(datos.Lector["Nombre"] is DBNull))
@@ -93,6 +114,8 @@ namespace Negocio
                         cliente.Apellido = (string)datos.Lector["Apellido"];
                     if (!(datos.Lector["Email"] is DBNull))
                         cliente.Email = (string)datos.Lector["Email"];
+                    if (!(datos.Lector["Direccion"] is DBNull))
+                        cliente.Direccion = (string)datos.Lector["Direccion"];
                     if (!(datos.Lector["Ciudad"] is DBNull))
                         cliente.Ciudad = (string)datos.Lector["Ciudad"];
                     if (!(datos.Lector["CP"] is DBNull))
@@ -134,6 +157,37 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+    }
+        public enum ValidacionDNI
+        {
+            dniCargado,
+            dniNoCargado,
+            error
+        }
+
+        public class DniValidador
+        {
+            public ValidacionDNI ValidacionDniEnLista(List<Clientes> listaClientes, string dniBuscado)
+            {
+                int i = 0;
+
+            if(listaClientes == null)
+            {
+                return ValidacionDNI.error;
+            }
+
+                foreach (var item in listaClientes)
+                {
+                    if (item.Documento == dniBuscado)
+                    {
+                        return ValidacionDNI.dniCargado;
+                    }
+                }
+                return ValidacionDNI.dniNoCargado;
+            
+        }
+
 
     }
 }

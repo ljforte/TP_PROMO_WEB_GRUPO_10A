@@ -17,12 +17,18 @@ public int CP { get; set; }--%>
             <div class="col-12">
                 <div class="mb-3">
                     <asp:Label id="lblDocumento" Text="Documento" runat="server" CssClass="form-label" />                    
-                    <asp:TextBox ID="txtDocumento" AutoPostBack="true" runat="server" CssClass="form-control" OnTextChanged="txtDocumento_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtDocumento" AutoPostBack="true" runat="server" CssClass="form-control" OnTextChanged="txtDocumento_TextChanged" ></asp:TextBox>
+                    <asp:Button ID="ValidarDni" runat="server" Text="Verificar Dni"  CssClass="btn btn-outline-success me-md-2" OnClick="ValidarDni_Click" />
+                     
+                    <div>
+                    <asp:Label ID="lblResultadoDni" runat="server" CssClass="text-danger"></asp:Label>
+                    </div>
                 </div>
+
 
                 <div class="mb-3">
                     <asp:Label id="lblNombre" Text="Nombre" runat="server" CssClass="form-label" />
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"  ></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ></asp:TextBox>
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblApellido" Text="Apellido" runat="server" CssClass="form-label" />
@@ -31,7 +37,6 @@ public int CP { get; set; }--%>
                 <div class="mb-3">
                     <asp:Label id="lblEmail" Text="Email" runat="server" CssClass="form-label" />
                     <div class="input-group">
-                        <span class="input-group-text" id="inputGroupPrepend2" >@</span>
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ></asp:TextBox>
                     </div>
                 </div>
@@ -51,7 +56,6 @@ public int CP { get; set; }--%>
         </div>
         <div class="row">
             <div class="d-grid gap-1 d-md-block">
-                <asp:Button Text="Verificar" ID="btnVerificar" OnClick="btnVerificar_Click" CssClass="btn btn-outline-success" runat="server"   />
                 <asp:Button Text="Siguiente" ID="btnSiguiente" OnClick="btnSiguiente_Click" CssClass="btn btn-outline-success" runat="server"   />
 
                 </div>
