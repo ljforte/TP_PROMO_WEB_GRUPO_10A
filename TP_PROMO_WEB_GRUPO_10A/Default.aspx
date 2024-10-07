@@ -4,8 +4,7 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">Sorteo de Promo Web</h1>
-            <p class="lead">Turun ....... Turun...Turun... Turun...</p>
+            <h1 id="aspnetTitle">Promo Web</h1>
         </section>
         <div class="card">
             <img src="/Content/Sorteo.png" class="card-img-top" alt="...">

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using Dominio;
 using WebGrease.Css.Ast;
 using static Negocio.ClienteNegocio;
+using Microsoft.Ajax.Utilities;
 
 namespace TP_PROMO_WEB_GRUPO_10A
 {
@@ -30,10 +31,22 @@ namespace TP_PROMO_WEB_GRUPO_10A
             {
                 CargarListaCliente();
                 HabilitarTxt(true);
+                EsconderTxtValidaciones();
             }
+
+          
+
         }
 
-        
+        private void EsconderTxtValidaciones()
+        {
+            lblErrorApellido.Visible = false;
+            lblErrorCiudad.Visible = false;
+            lblErrorCP.Visible = false;
+            lblErrorDireccion.Visible = false;
+            lblErrorNombre.Visible = false;
+            lblErrorEmail.Visible = false;
+        }
         private void HabilitarTxt(bool flag)
         {
 
@@ -72,21 +85,59 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
+            bool ok = true;
+            EsconderTxtValidaciones();
 
             try
             {
-                nuevoCliente = new Clientes();
-                ClienteNegocio neg = new ClienteNegocio();
-                //nuevoCliente.Id = int.Parse(txtId.Text);
-                nuevoCliente.Documento = txtDocumento.Text;
-                nuevoCliente.Nombre = txtNombre.Text;
-                nuevoCliente.Apellido = txtApellido.Text;
-                nuevoCliente.Email = txtEmail.Text;
-                nuevoCliente.Ciudad = txtCiudad.Text;
-                nuevoCliente.Direccion = txtDireccion.Text;
-                nuevoCliente.CP = int.Parse(txtCP.Text);
-                neg.Agregar(nuevoCliente);
-                Response.Redirect("Default.aspx", false);
+                if (txtApellido.Text.IsNullOrWhiteSpace()) {
+                    lblErrorApellido.Visible=true;
+                    ok = false;
+                }
+                if (txtCiudad.Text.IsNullOrWhiteSpace())
+                {
+                    lblErrorCiudad.Visible = true;
+                    ok = false;
+                }
+                if (txtNombre.Text.IsNullOrWhiteSpace())
+                {
+
+                    lblErrorNombre.Visible = true;
+                    ok = false;
+                }
+                if (txtDireccion.Text.IsNullOrWhiteSpace())
+                {
+                    lblErrorDireccion.Visible = true;
+                    ok = false;
+                }
+                if (txtCP.Text.IsNullOrWhiteSpace())
+                {
+                    lblErrorCP.Visible = true;
+                    ok = false;
+                }
+                if (txtEmail.Text.IsNullOrWhiteSpace())
+                {
+                    lblErrorEmail.Visible = true;
+                    ok = false;
+                }
+
+                if (ok)
+                {
+                    btnSiguiente.Text = "AVANZO";
+                   /* nuevoCliente = new Clientes();
+                    ClienteNegocio neg = new ClienteNegocio();
+                    //nuevoCliente.Id = int.Parse(txtId.Text);
+                    nuevoCliente.Documento = txtDocumento.Text;
+                    nuevoCliente.Nombre = txtNombre.Text;
+                    nuevoCliente.Apellido = txtApellido.Text;
+                    nuevoCliente.Email = txtEmail.Text;
+                    nuevoCliente.Ciudad = txtCiudad.Text;
+                    nuevoCliente.Direccion = txtDireccion.Text;
+                    nuevoCliente.CP = int.Parse(txtCP.Text);
+                    neg.Agregar(nuevoCliente);
+                    Response.Redirect("Default.aspx", false);
+                   */
+                }
 
             }
             catch (Exception ex)

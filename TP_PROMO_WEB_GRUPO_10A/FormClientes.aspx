@@ -29,28 +29,39 @@ public int CP { get; set; }--%>
                 <div class="mb-3">
                     <asp:Label id="lblNombre" Text="Nombre" runat="server" CssClass="form-label" />
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <div>
+                    <asp:Label id="lblErrorNombre" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label "  />
+                    </div>
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblApellido" Text="Apellido" runat="server" CssClass="form-label" />
                     <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ></asp:TextBox>
+                    <asp:Label id="lblErrorApellido" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label " />
+
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblEmail" Text="Email" runat="server" CssClass="form-label" />
                     <div class="input-group">
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ></asp:TextBox>
                     </div>
+                        <div>
+                         <asp:Label id="lblErrorEmail" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label " />
+                        </div>
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblDireccion" Text="Direccion" runat="server" CssClass="form-label" />
                     <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" ></asp:TextBox>
+                     <asp:Label id="lblErrorDireccion" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label " />
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblCiudad" Text="Ciudad" runat="server" CssClass="form-label" />
                     <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" ></asp:TextBox>
+                     <asp:Label id="lblErrorCiudad" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label " />
                 </div>
                 <div class="mb-3">
                     <asp:Label id="lblCP" Text="CP" runat="server" CssClass="form-label" />
                     <asp:TextBox ID="txtCP" runat="server" CssClass="form-control" ></asp:TextBox>
+                     <asp:Label id="lblErrorCP" Text="Este campo es obligatorio" runat="server" forecolor="Red" CssClass="form-label " />
                 </div>
             </div>
         </div>
