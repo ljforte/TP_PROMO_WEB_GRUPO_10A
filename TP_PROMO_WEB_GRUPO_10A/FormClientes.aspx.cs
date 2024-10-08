@@ -15,6 +15,8 @@ namespace TP_PROMO_WEB_GRUPO_10A
 {
     public partial class FormClientes : Page
     {
+        int idArticulo;
+        string codigoVoucher;
         public List<Clientes> ListaClientes;
 
         private Clientes nuevoCliente;
@@ -29,6 +31,9 @@ namespace TP_PROMO_WEB_GRUPO_10A
         {
             if (!IsPostBack)
             {
+                codigoVoucher = Request.QueryString["codigo"].ToString();
+                idArticulo = int.Parse(Request.QueryString["id"]);
+
                 CargarListaCliente();
                 HabilitarTxt(true);
                 EsconderTxtValidaciones();
@@ -90,6 +95,8 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
             VoucherNegocio negocioV = new VoucherNegocio();
             Vouchers voucher = new Vouchers();
+            codigoVoucher = Request.QueryString["codigo"].ToString();
+            idArticulo = int.Parse(Request.QueryString["id"]);
 
             try
             {
@@ -141,9 +148,9 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
                     neg.Agregar(nuevoCliente);
                     id=negocio.ConsultarId(nuevoCliente.Documento);
-                    voucherNegocio.CargarRegistro(id);
+                    voucherNegocio.CargarRegistro(id, idArticulo, codigoVoucher);
 
-                    Response.Redirect("Default.aspx", false);
+                    Response.Redirect("FormFelicidades.aspx", false);
                    
                 }
 

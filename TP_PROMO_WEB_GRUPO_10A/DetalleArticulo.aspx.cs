@@ -11,9 +11,12 @@ namespace TP_PROMO_WEB_GRUPO_10A
     public partial class DetalleArticulo : Page
     {
         public List<Dominio.Articulos> listaArticulos;
+        string codigo, casteo;
+        int id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            codigo = Request.QueryString["codigo"].ToString();
             if (!IsPostBack)
             {
                 CargarArticulos();
@@ -30,7 +33,16 @@ namespace TP_PROMO_WEB_GRUPO_10A
 
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormFelicidades.aspx", false);
+
+        }
+
+        protected void RepeaterArticulos_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "SelectedItem")
+            {
+                id = int.Parse((string)e.CommandArgument);
+                Response.Redirect("FormClientes.aspx?codigo=" + codigo + "&id=" + id, false);
+            }
         }
     }
 }

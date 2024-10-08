@@ -44,16 +44,12 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-    public void CargarRegistro(int id)
+    public void CargarRegistro(int id, int idArticulo, string codigoVoucher)
     {
         AccesoDatos datos = new AccesoDatos();
-        int IdArticulo = 0;
-
-        datos.setearConsulta("insert into Vouchers (IdCliente, FechaCanje. IdArticulo) VALUES (IdCliente, FechaCanje, IdArticulo)"); //+IdArticulo+")")
-
-        datos.setearParametro("@IdCliente", id);
-        datos.setearParametro("@FechaCanje", DateTime.Now);
-        datos.setearParametro("@IdArticulo", IdArticulo);
+        datos.setearConsulta("update VOUCHERS set idCliente = " + id + 
+                                        ", FechaCanje = getdate(), idArticulo = " + idArticulo +
+                                        " where CodigoVoucher =" + "'" + codigoVoucher + "'");
 
         datos.ejecutarAccion();
     }

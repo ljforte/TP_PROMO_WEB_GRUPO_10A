@@ -1,9 +1,8 @@
-﻿
-<%@ Page Title="Detalle Articulos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleArticulo.aspx.cs" Inherits="TP_PROMO_WEB_GRUPO_10A.DetalleArticulo" %>
+﻿<%@ Page Title="Detalle Articulos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetalleArticulo.aspx.cs" Inherits="TP_PROMO_WEB_GRUPO_10A.DetalleArticulo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>¡Elegí el articulo que deseas canjear!</h1>
-    <asp:Repeater ID="RepeaterArticulos" runat="server">
+    <asp:Repeater ID="RepeaterArticulos" runat="server" OnItemCommand="RepeaterArticulos_ItemCommand">
         <HeaderTemplate>
             <table class="table table-bordered">
                 <thead>
@@ -22,7 +21,7 @@
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Eval("Id") %></td>
+               <td><%# Eval("Id") %></td>
                 <td><%# Eval("Codigo") %></td>
                 <td><%# Eval("Nombre") %></td>
                 <td><%# Eval("Descripcion") %></td>
@@ -38,6 +37,7 @@
                                     <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
                                         <img src='<%# Eval("ImagenUrl") %>' class="d-block w-100" alt="Imagen del Artículo">
                                     </div>
+
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
@@ -49,13 +49,13 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                        <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" CssClass="btn btn-primary" />
                     </div>
                 </td>
+                <td><asp:Button ID="btnSeleccionarArticulo" runat="server" Text="Seleccionar" CommandName="SelectedItem" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary" /></td>
             </tr>
         </ItemTemplate>
         <FooterTemplate>
-                </tbody>
+            </tbody>
             </table>
         </FooterTemplate>
     </asp:Repeater>
